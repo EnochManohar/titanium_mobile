@@ -552,7 +552,9 @@ END_UI_THREAD_PROTECTED_VALUE(opened)
 		[self rememberProxy:closeAnimation];
 	}
 
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	[self performSelectorOnMainThread:@selector(closeOnUIThread:) withObject:args waitUntilDone:YES];
+	[pool release];
 }
 
 -(void)closeOnUIThread:(id)args
